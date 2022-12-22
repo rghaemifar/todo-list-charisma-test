@@ -7,3 +7,7 @@ export const add = (text: string) => (dispatch: types.todoListDispatchType) => {
 export const remove = (id: string) => (dispatch: types.todoListDispatchType) => {
   return dispatch({ type: types.REMOVE, payload: { id } })
 }
+
+export const loadTodoListFromLS = () => (dispatch: types.todoListDispatchType) => {
+  return dispatch({ type: types.LOAD_FROM_LS })
+}

@@ -1,4 +1,4 @@
-import { FunctionComponent, useReducer } from 'react'
+import { FunctionComponent, useEffect, useReducer } from 'react'
 import Text from '../../components/Text'
 import Container from '../../layouts/Container'
 import AddTaskToList from '../../modules/AddTaskToList'
@@ -13,6 +13,10 @@ interface ITodoListTemplateProps {}
 
 const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
   const [todoListState, todoListDispatch] = useReducer(todoListReducer, todoListInitialState)
+
+  useEffect(() => {
+    todoListActions.loadTodoListFromLS()(todoListDispatch)
+  }, [])
 
   return (
     <Container>

@@ -6,14 +6,22 @@ export const todoListInitialState: types.todoListStateTypes = {
   todoList: [],
 }
 
+const setToLocalStorage = (key: string, value: any) => {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+const getToLocalStorage = (key: string) => {
+  const value = localStorage.getItem(key)
+  return typeof value === 'string' ? JSON.parse(value) : null
+}
+
 export const todoListReducer = (
   state: types.todoListStateTypes = todoListInitialState,
   action: types.todoListActionsTypes,
 ): any => {
-  const { type, payload } = action
+  const { type } = action
   switch (type) {
     case types.ADD: {
-      const { text } = payload
+      const { text } = action.payload
       const prevTodoList = state.todoList
       const newTask = {
         id: prevTodoList.length,
@@ -22,13 +30,19 @@ export const todoListReducer = (
         createdAt: new Date(),
       }
       const todoList = [...prevTodoList, newTask]
+      setToLocalStorage('todoList', todoList)
       return { ...state, todoList }
     }
     case types.REMOVE: {
-      const { id } = payload
+      const { id } = action.payload
       const prevTodoList = state.todoList
-      const filteredTodoList = prevTodoList.filter((task) => task.id !== id)
-      return { ...state, todoList: filteredTodoList }
+      const todoList = prevTodoList.filter((task) => task.id !== id)
+      setToLocalStorage('todoList', todoList)
+      return { ...state, todoList }
+    }
+    case types.LOAD_FROM_LS: {
+      const todoList = getToLocalStorage('todoList') || []
+      return { ...state, todoList }
     }
 
     default:

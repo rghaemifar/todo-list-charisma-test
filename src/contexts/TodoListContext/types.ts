@@ -2,15 +2,19 @@ import { Dispatch } from 'react'
 
 export const ADD = 'ADD'
 export const REMOVE = 'REMOVE'
+export const LOAD_FROM_LS = 'LOAD_FROM_LS'
 
 export type todoListActionsTypes =
   | {
-      type: 'ADD'
+      type: typeof ADD
       payload: { text: string }
     }
   | {
-      type: 'REMOVE'
+      type: typeof REMOVE
       payload: { id: string }
+    }
+  | {
+      type: typeof LOAD_FROM_LS
     }
 
 type TaskType = {
