@@ -13,7 +13,7 @@ const Button: FunctionComponent<IButtonProps> = (props) => {
 
   const defaultStyle = twMerge(
     `
-    bg-secondary px-6 py-2 dark:bg-white 
+    bg-secondary px-6 py-2 dark:bg-grey-100 
     cursor-pointer rounded transition
     text-white dark:text-primary  
     font-medium
