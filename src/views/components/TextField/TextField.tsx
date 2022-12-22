@@ -1,4 +1,4 @@
-import { FunctionComponent, InputHTMLAttributes } from 'react'
+import { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ITextFieldProps extends InputHTMLAttributes<Element> {
@@ -6,8 +6,10 @@ interface ITextFieldProps extends InputHTMLAttributes<Element> {
   label?: string
 }
 
-const TextField: FunctionComponent<ITextFieldProps> = (props) => {
-  const { type = 'text', name, value = '', className, ...otherProps } = props
+export type refType = HTMLInputElement
+
+const TextField: ForwardRefRenderFunction<refType, ITextFieldProps> = (props, ref) => {
+  const { type = 'text', name, className, ...otherProps } = props
 
   const defaultStyle = `outline-none border-2 rounded px-3 
     py-1 transition duration-200 w-full 
@@ -17,14 +19,14 @@ const TextField: FunctionComponent<ITextFieldProps> = (props) => {
 
   return (
     <input
+      ref={ref}
       className={twMerge(defaultStyle, className)}
       type={type}
       id={name}
       name={name}
-      value={value}
       {...otherProps}
     />
   )
 }
 
-export default TextField
+export default forwardRef(TextField)
