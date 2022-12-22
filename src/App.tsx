@@ -1,10 +1,10 @@
-import React from 'react'
+import TodoListTemplate from './views/templates/TodoListTemplate'
 import ThemeWrapper from './wrappers/ThemeWrapper'
 
 function App() {
   return (
     <ThemeWrapper>
-      <h1 className='text-3xl font-bold underline text-primary'>Hello world!</h1>
+      <TodoListTemplate />
     </ThemeWrapper>
   )
 }
