@@ -1,4 +1,5 @@
 import { createContext } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import * as types from './types'
 import * as todoListActions from './Action'
 
@@ -24,8 +25,9 @@ export const todoListReducer = (
       const { text } = action.payload
       const prevTodoList = Array.from(state.todoList)
       const newTask: types.TaskType = {
-        id: prevTodoList.length.toString(),
         text,
+        id: prevTodoList.length.toString(),
+        uuid: uuidv4(),
         createdDate: new Date(),
       }
       const todoList = [...prevTodoList, newTask]
@@ -48,7 +50,7 @@ export const todoListReducer = (
       const tempList = Array.from(state.todoList)
       const [removed] = tempList.splice(source, 1)
       tempList.splice(destination, 0, removed)
-      const todoList = tempList.map((task, i) => ({ ...task, id: i }))
+      const todoList = tempList.map((task, i) => ({ ...task, id: i.toString() }))
       setToLocalStorage('todoList', todoList)
       return { ...state, todoList }
     }

@@ -23,6 +23,7 @@ export type todoListActionsTypes =
     }
 
 export type TaskType = {
+  uuid: string
   id: string
   text: string
   createdDate: Date

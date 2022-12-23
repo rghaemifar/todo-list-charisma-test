@@ -15,7 +15,7 @@ const TodoList = () => {
   }
 
   const handleDragEnd = (result: any) => {
-    actions.replace(result.source.index, result.destination.index)(dispatch)
+    actions.replace(result.source?.index, result.destination?.index)(dispatch)
   }
 
   return (
@@ -24,9 +24,9 @@ const TodoList = () => {
         <Droppable droppableId='droppable'>
           {(provided) => (
             <>
-              <div {...provided.droppableProps} ref={provided.innerRef}>
+              <div {...provided.droppableProps} ref={provided.innerRef} className='py-5'>
                 {todoList.map((task, index) => (
-                  <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                  <Draggable key={task.uuid} draggableId={task.uuid} index={index}>
                     {(provided) => (
                       <div ref={provided.innerRef} {...provided.draggableProps} className='pt-3'>
                         <Task
