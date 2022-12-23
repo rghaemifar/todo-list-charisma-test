@@ -9,11 +9,17 @@ import {
   todoListActions,
 } from '../../../contexts/TodoListContext'
 import TodoList from '../../modules/TodoList'
+import Button from '../../components/Button'
 
 interface ITodoListTemplateProps {}
 
 const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
   const [todoListState, todoListDispatch] = useReducer(todoListReducer, todoListInitialState)
+  const hasTodoList = Boolean(todoListState.todoList.length)
+
+  const handleClear = () => {
+    todoListActions.clear()(todoListDispatch)
+  }
 
   useEffect(() => {
     todoListActions.loadTodoListFromLS()(todoListDispatch)
@@ -33,6 +39,7 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
       >
         <AddTaskToList />
         <TodoList />
+        {hasTodoList && <Button onClick={handleClear}>Clear list</Button>}
       </TodoListContext.Provider>
     </Container>
   )

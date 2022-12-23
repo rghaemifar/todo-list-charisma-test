@@ -1,24 +1,23 @@
 import { Dispatch } from 'react'
-
-export const ADD = 'ADD'
-export const REMOVE = 'REMOVE'
-export const LOAD_FROM_LS = 'LOAD_FROM_LS'
-export const REPLACE = 'REPLACE'
+import * as constants from './constants'
 
 export type todoListActionsTypes =
   | {
-      type: typeof ADD
+      type: typeof constants.ADD
       payload: { text: string }
     }
   | {
-      type: typeof REMOVE
+      type: typeof constants.REMOVE
       payload: { id: string }
     }
   | {
-      type: typeof LOAD_FROM_LS
+      type: typeof constants.CLEAR
     }
   | {
-      type: typeof REPLACE
+      type: typeof constants.LOAD_FROM_LS
+    }
+  | {
+      type: typeof constants.REPLACE
       payload: { source: number; destination: number }
     }
 
