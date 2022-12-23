@@ -18,7 +18,7 @@ const Button: FunctionComponent<IButtonProps> = (props) => {
     text-white dark:text-primary  
     font-medium
   `,
-    disabled ? 'bg-grey-600 ' : '',
+    disabled ? 'bg-grey-400 dark:bg-grey-500 cursor-default' : '',
   )
   const iconBtnStyle = iconBtn ? `rounded-full p-2` : ''
 

@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef } from 'react'
+import { ChangeEvent, FunctionComponent, useState } from 'react'
 import useEventListener from '../../../hooks/useEventListener'
 import Button from '../Button'
 import TextField from '../TextField'
@@ -12,16 +12,19 @@ interface INewTextProps {
 
 const NewText: FunctionComponent<INewTextProps> = (props) => {
   const { name, onSubmit, placeholder = 'Type here..', label = 'Submit' } = props
-  const textFieldRef = useRef<HTMLInputElement>(null)
+  const [value, setValue] = useState<string>('')
 
   const resetTextField = () => {
-    if (textFieldRef.current) textFieldRef.current.value = ''
+    setValue('')
   }
 
   const handleSubmit = () => {
-    const value = textFieldRef.current?.value
-    onSubmit && onSubmit(value || '')
+    onSubmit && onSubmit(value)
     resetTextField()
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
   }
 
   const onKeyPress = (e: any) => {
@@ -34,12 +37,15 @@ const NewText: FunctionComponent<INewTextProps> = (props) => {
     <div className='flex'>
       <TextField
         name={name}
-        ref={textFieldRef}
         placeholder={placeholder}
         autoComplete='off'
+        value={value}
+        onChange={handleChange}
         className='mr-3'
       />
-      <Button onClick={handleSubmit}>{label}</Button>
+      <Button onClick={handleSubmit} disabled={!value}>
+        {label}
+      </Button>
     </div>
   )
 }
