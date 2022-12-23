@@ -1,7 +1,12 @@
-import React from 'react'
+import TodoListTemplate from './views/templates/TodoListTemplate'
+import ThemeWrapper from './wrappers/ThemeWrapper'
 
 function App() {
-  return <div className='App'>simple todo list</div>
+  return (
+    <ThemeWrapper>
+      <TodoListTemplate />
+    </ThemeWrapper>
+  )
 }
 
 export default App
