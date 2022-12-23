@@ -27,8 +27,8 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
   }, [])
 
   return (
-    <Container className='py-8'>
-      <Text component='h3' className='text-2xl font-semibold mb-10'>
+    <Container className='py-8 relative'>
+      <Text component='h3' className='text-2xl font-semibold mb-3'>
         Note now, do later =)
       </Text>
       <TodoListContext.Provider
@@ -38,7 +38,9 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
           actions: todoListActions,
         }}
       >
-        <AddTaskToList />
+        <div className='sticky top-0 py-5 bg-white dark:bg-primary'>
+          <AddTaskToList />
+        </div>
         <TodoList />
         {hasTodoList && <Button onClick={handleClear}>Clear list</Button>}
         <div className='mt-8'>
