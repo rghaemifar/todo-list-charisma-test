@@ -27,7 +27,7 @@ export const todoListReducer = (
         id: prevTodoList.length,
         text,
         order: prevTodoList.length,
-        createdAt: new Date(),
+        createdDate: new Date(),
       }
       const todoList = [...prevTodoList, newTask]
       setToLocalStorage('todoList', todoList)

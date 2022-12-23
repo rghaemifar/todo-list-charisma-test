@@ -17,11 +17,11 @@ export type todoListActionsTypes =
       type: typeof LOAD_FROM_LS
     }
 
-type TaskType = {
+export type TaskType = {
   id: string
   text: string
   order: number
-  createdAt: Date
+  createdDate: Date
 }
 
 export type todoListStateTypes = {
