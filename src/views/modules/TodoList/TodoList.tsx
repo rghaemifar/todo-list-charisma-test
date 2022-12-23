@@ -18,6 +18,7 @@ const TodoList = () => {
     actions.replace(result.source?.index, result.destination?.index)(dispatch)
   }
 
+  if (!todoList.length) return <></>
   return (
     <DiscriptiveWindowSizeContext.Provider value={discriptiveWindowSize}>
       <DragDropContext onDragEnd={handleDragEnd}>
