@@ -11,3 +11,8 @@ export const remove = (id: string) => (dispatch: types.todoListDispatchType) => 
 export const loadTodoListFromLS = () => (dispatch: types.todoListDispatchType) => {
   return dispatch({ type: types.LOAD_FROM_LS })
 }
+
+export const replace =
+  (source: number, destination: number) => (dispatch: types.todoListDispatchType) => {
+    return dispatch({ type: types.REPLACE, payload: { source, destination } })
+  }

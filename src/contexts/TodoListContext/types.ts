@@ -3,6 +3,7 @@ import { Dispatch } from 'react'
 export const ADD = 'ADD'
 export const REMOVE = 'REMOVE'
 export const LOAD_FROM_LS = 'LOAD_FROM_LS'
+export const REPLACE = 'REPLACE'
 
 export type todoListActionsTypes =
   | {
@@ -16,11 +17,14 @@ export type todoListActionsTypes =
   | {
       type: typeof LOAD_FROM_LS
     }
+  | {
+      type: typeof REPLACE
+      payload: { source: number; destination: number }
+    }
 
 export type TaskType = {
   id: string
   text: string
-  order: number
   createdDate: Date
 }
 

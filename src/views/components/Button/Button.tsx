@@ -20,7 +20,7 @@ const Button: FunctionComponent<IButtonProps> = (props) => {
   `,
     disabled ? 'bg-grey-600 ' : '',
   )
-  const iconBtnStyle = iconBtn ? `rounded-full px-2 py-2` : ''
+  const iconBtnStyle = iconBtn ? `rounded-full p-2` : ''
 
   return createElement(component, {
     className: twMerge(defaultStyle, iconBtnStyle, className),
