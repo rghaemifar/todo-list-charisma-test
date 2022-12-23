@@ -9,7 +9,7 @@ interface IThemeWrapperProps extends HTMLAttributes<Element> {
 
 const themeIcons = {
   light: () => <MoonIcon width={36} className='text-white' />,
-  dark: () => <SunIcon width={36} className='dark:text-black' />,
+  dark: () => <SunIcon width={36} className='dark:text-primary' />,
 }
 
 const ThemeWrapper: FunctionComponent<IThemeWrapperProps> = (props) => {

@@ -8,6 +8,7 @@ import {
   todoListReducer,
   todoListActions,
 } from '../../../contexts/TodoListContext'
+import TodoList from '../../modules/TodoList'
 
 interface ITodoListTemplateProps {}
 
@@ -31,16 +32,8 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
         }}
       >
         <AddTaskToList />
+        <TodoList />
       </TodoListContext.Provider>
-      {todoListState.todoList?.map((task: any) => (
-        <button
-          className='mx-4'
-          key={task.id}
-          onClick={() => todoListActions.remove(task.id)(todoListDispatch)}
-        >
-          {task.text}
-        </button>
-      ))}
     </Container>
   )
 }
