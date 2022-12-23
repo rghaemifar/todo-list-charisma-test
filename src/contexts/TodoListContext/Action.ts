@@ -21,3 +21,7 @@ export const replace =
   (source: number, destination: number) => (dispatch: types.todoListDispatchType) => {
     return dispatch({ type: constants.REPLACE, payload: { source, destination } })
   }
+
+export const changeList = (list: types.TaskType[]) => (dispatch: types.todoListDispatchType) => {
+  return dispatch({ type: constants.CHANGE_LIST, payload: { list } })
+}

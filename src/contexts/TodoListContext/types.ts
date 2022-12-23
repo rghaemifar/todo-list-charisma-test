@@ -1,6 +1,17 @@
 import { Dispatch } from 'react'
 import * as constants from './constants'
 
+export type TaskType = {
+  uuid: string
+  id: string
+  text: string
+  createdDate: Date
+}
+
+export type todoListStateTypes = {
+  todoList: TaskType[]
+}
+
 export type todoListActionsTypes =
   | {
       type: typeof constants.ADD
@@ -20,16 +31,9 @@ export type todoListActionsTypes =
       type: typeof constants.REPLACE
       payload: { source: number; destination: number }
     }
-
-export type TaskType = {
-  uuid: string
-  id: string
-  text: string
-  createdDate: Date
-}
-
-export type todoListStateTypes = {
-  todoList: TaskType[]
-}
+  | {
+      type: typeof constants.CHANGE_LIST
+      payload: { list: TaskType[] }
+    }
 
 export type todoListDispatchType = Dispatch<todoListActionsTypes>

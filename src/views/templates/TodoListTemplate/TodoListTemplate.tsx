@@ -10,6 +10,7 @@ import {
 } from '../../../contexts/TodoListContext'
 import TodoList from '../../modules/TodoList'
 import Button from '../../components/Button'
+import TodoListJsonEditor from '../../modules/TodoListJsonEditor'
 
 interface ITodoListTemplateProps {}
 
@@ -26,8 +27,8 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
   }, [])
 
   return (
-    <Container>
-      <Text component='h3' className='text-2xl font-semibold pt-10 mb-10'>
+    <Container className='py-8'>
+      <Text component='h3' className='text-2xl font-semibold mb-10'>
         Note now, do later =)
       </Text>
       <TodoListContext.Provider
@@ -40,6 +41,9 @@ const TodoListTemplate: FunctionComponent<ITodoListTemplateProps> = () => {
         <AddTaskToList />
         <TodoList />
         {hasTodoList && <Button onClick={handleClear}>Clear list</Button>}
+        <div className='mt-8'>
+          <TodoListJsonEditor />
+        </div>
       </TodoListContext.Provider>
     </Container>
   )

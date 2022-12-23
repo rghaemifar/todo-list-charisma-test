@@ -56,6 +56,12 @@ export const todoListReducer = (
       setToLocalStorage(constants.TODO_LIST_KEY, todoList)
       return { ...state, todoList }
     }
+    case constants.CHANGE_LIST: {
+      const { list } = action.payload
+      const todoList = Array.from(list)
+      setToLocalStorage(constants.TODO_LIST_KEY, todoList)
+      return { ...state, todoList }
+    }
 
     default:
       return state
