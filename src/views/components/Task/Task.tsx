@@ -19,7 +19,6 @@ const Task: FunctionComponent<ITaskProps> = (props) => {
   const { mobile } = useContext(DiscriptiveWindowSizeContext)
   const hasDndHandle = Boolean(dragHandleProps)
   const TEXT_MAX_LEN = mobile ? 100 : 190
-
   const createdAt = getDateWithTimeString(new Date(createdDate), true)
 
   const handleRemoveClick = () => {
@@ -37,7 +36,9 @@ const Task: FunctionComponent<ITaskProps> = (props) => {
         <Text className='font-medium'>
           {text.length > TEXT_MAX_LEN ? <Collapse>{text}</Collapse> : <>{text}</>}
         </Text>
-        <Text className='mt-3 text-sm text-grey-600 dark:text-grey-400'>{createdAt}</Text>
+        <Text className='mt-3 text-sm text-grey-600 dark:text-grey-400'>
+          {createdDate ? createdAt : '-'}
+        </Text>
       </div>
       <div className='flex self-start ml-4 md:ml-8 mt-2'>
         <Button iconBtn onClick={handleRemoveClick}>
